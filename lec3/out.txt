@@ -1,0 +1,18 @@
+max integer: 2147483647
+max integer with while loop: 2147483647
+max integer with for loop: 2147483647
+max integer with do while loop: 2147483647
+min integer: -2147483648
+min integer with while loop: -2147483648
+min integer with for loop: -2147483648
+min integer with do while loop: -2147483648
+The machine epsilon for loats are:         1.19209e-07
+The machine epsilon for double is:           2.22045e-16
+The machine epsilon for long double is:      1.0842e-19
+Summing up and down with floats:
+sum_up_float: 15.4037
+sum_down_float: 18.8079
+The reason for this difference is that when summing down we are initiating the float to have a high precision whereas another method we begin at a low precision and the high precision terms at the end will be ignored. The series converges as a function of max.The sum has already converged by MAX_INT/3 since we are already beyond the precision of the float.Summing up and down with doubles:
+sum_up_double: 20.9662
+sum_down_double: 20.9662
+Since double can handle more decimals we do not reach that point and get matching results for summing up and down with double.
