@@ -1,0 +1,9 @@
+set term pdf
+set out "plot.pdf"
+set grid
+set datafile separator " "
+set xlabel "x"
+set ylabel "y"
+set tics out
+set key bottom
+plot [0:10][-5:5] "out.dat" with point title "my natural logarithm", "out.dat" using 1:3 with lines title "natural logarithm from math.h"

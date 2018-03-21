@@ -1,0 +1,87 @@
+
+Testing komplex_set...
+a= 0 + 2 i
+z = a
+z= 0 + 2 i
+Test passed
+
+Testing komplex_new...
+a = 0 + 2 i
+x = 0, y = 2
+z = x+iy
+z = 0 + 2 i
+Test passed
+
+Testing komplex_add...
+a = 0 + 2 i
+b = 0 + 2 i
+a+b should   = 0 + 4 i
+a+b actually = 0 + 4 i
+Test passed
+
+Testing komplex_sub...
+a = 0 + 2 i
+b = 0 + 2 i
+a-b should   = 0 + 0 i
+a-b actually = 0 + 0 i
+Test passed
+
+Testing komplex_equal...
+z = a = 0 + 2 i
+Is a = z? Answer = true
+Actually true
+z = b = 0 + 2 i
+Is a = z? Answer = true
+Actually true
+Test passed
+
+Testing komplex_mul...
+a= 0 + 2 i
+b= 0 + 2 i
+a*b should   = -4 + 0 i
+a*b actually = -4 + 0 i
+Test passed
+
+Testing komplex_div...
+a= 0 + 2 i
+b= 0 + 2 i
+a/b should   = 1 + 0 i
+a/b actually = 1 + 0 i
+Test passed
+
+Testing komplex_conjugate...
+a= 0 + 2 i
+a* should   = 0 + -2 i
+a* actually = 0 + -2 i
+Test passed
+
+Testing komplex_abs...
+a= 0 + 2 i
+abs(a) should   = 2 + 0 i
+abs(a) actually = 2 + 0 i
+Test passed
+
+testing komplex_exp...
+a= 0 + 2 i
+exp(a) should   = -0.416147 + 0.909297 i
+exp(a) actually = -0.416147 + 0.909297 i
+test passed
+
+Testing komplex_sin...
+a= 0 + 2 i
+sin(a) should   = 0 + 3.62686 i
+sin(a) actually = 0 + 3.62686 i
+Test passed
+
+Testing komplex_cos...
+a= 0 + 2 i
+cos(a) should   = 3.7622 + -0 i
+cos(a) actually = 3.7622 + -0 i
+Test passed
+
+Testing komplex_sqrt...
+a= 0 + 2 i
+sqrt(a) should   = 1 + 1 i
+sqrt(a) actually = 1 + 1 i
+Test passed
+

@@ -1,0 +1,7 @@
+set terminal pdf
+set output "plot.pdf"
+set key out
+set xlabel "x axis"
+set ylabel "y axis"
+
+plot "hamiltonian.out.txt" with lines title "Hamiltonian"

@@ -1,0 +1,114 @@
+The answer to question 1 is plot.svg
+Solving question 2
+The first 3 columns of inputlinear.txt are the matrix and the fourth colum is the result of Ax
+Allocating memory.
+Initializing vector v and matrix M.
+v=
+6.23
+5.37
+2.29
+Copying vector v into v2 and matrix M to M2 for calculations.
+The value found for x was:
+-1.1379
+-2.83303
+0.851459
+Verifying the result. Be the judge of this method yourself:
+Printing Ax.
+6.23
+5.37
+2.29
+Solving by the LU Decomposition:
+The value found for x was:
+-1.1379
+-2.83303
+0.851459
+Verifying the result. Be the judge of this method yourself:
+Printing Ax.
+6.23
+5.37
+2.29
+Solving by the QR Decomposition:
+The value found for x was:
+-1.1379
+-2.83303
+0.851459
+Verifying the result. Be the judge of this method yourself:
+Printing Ax.
+6.23
+5.37
+2.29
+Solving optional question 3
+Allocating memory.
+Creating Hilbert matrix. And identity matrix.
+Solving The eigenvalues/vectors problem.
+	 1. Displaying eigenvalues and eigenvectors:
+	Eigenvalue: 1.50021
+	Corresponding eigenvector:
+0.792608
+0.451923
+0.322416
+0.252161
+	Eigenvalue: 0.169141
+	Corresponding eigenvector:
+0.582076
+-0.370502
+-0.509579
+-0.514048
+	Eigenvalue: 0.00673827
+	Corresponding eigenvector:
+-0.179186
+0.741918
+-0.100228
+-0.638283
+	Eigenvalue: 9.67023e-05
+	Corresponding eigenvector:
+-0.0291933
+0.328712
+-0.791411
+0.514553
+Verifying the result.
+To evaluate the determinant we will use the functions defined in the linear algebra header
+that depend on the LU decomposition of the matrix whose determinant we want.
+	1. Verifying determinants.
+	Verifying eiganvalue 1.50021.
+		1. Creating H-evalI.
+		2. LU decomposing.
+		3. Calculating determinant.
+		|A-evalI|=-5.11428e-16.
+	Verifying eiganvalue 0.169141.
+		1. Creating H-evalI.
+		2. LU decomposing.
+		3. Calculating determinant.
+		|A-evalI|=1.04525e-17.
+	Verifying eiganvalue 0.00673827.
+		1. Creating H-evalI.
+		2. LU decomposing.
+		3. Calculating determinant.
+		|A-evalI|=-1.33489e-19.
+	Verifying eiganvalue 9.67023e-05.
+		1. Creating H-evalI.
+		2. LU decomposing.
+		3. Calculating determinant.
+		|A-evalI|=-2.35932e-20.
+	2. Verifying eigenvectors:
+In order to do that, we'll use the fact that Aevec=eval*evec.
+	Obtained vector for eigenvalue 1.50021.
+0.792608
+0.451923
+0.322416
+0.252161
+	Obtained vector for eigenvalue 0.169141.
+0.582076
+-0.370502
+-0.509579
+-0.514048
+	Obtained vector for eigenvalue 0.00673827.
+-0.179186
+0.741918
+-0.100228
+-0.638283
+	Obtained vector for eigenvalue 9.67023e-05.
+-0.0291933
+0.328712
+-0.791411
+0.514553

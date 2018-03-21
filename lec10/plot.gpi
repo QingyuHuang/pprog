@@ -1,0 +1,9 @@
+set terminal pdf
+set output "plot.pdf"
+set xlabel "r"
+set ylabel "f(r)"
+
+plot \
+"hydrogen.txt" using "radius":"calculated" with dots title "Calculated" \
+, "hydrogen.txt" using "radius":"analytical" with lines title "Analytical"
+

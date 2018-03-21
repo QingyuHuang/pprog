@@ -1,0 +1,26 @@
+Main: Testing nvector_alloc ...
+Test passed
+
+Main: now test nvector_set and nvector_get ...
+Test passed
+
+Main: now testing nvector_dot_product ...
+a * b should = 1.17365
+a * b actually = 1.53211
+Test failed
+
+Main: now testing nvector_add ...
+a + b should   = 1.350380.08803371.200850.3911140.484328
+a + b actually = 1.350380.08803371.200850.3911140.484328
+Test passed
+
+Main: now testing nvector_sub ...
+a - b should   = 0.09779610.08426960.4349640.23792-0.20913
+a - b actually = 0.09779610.08426960.4349640.23792-0.20913
+Test passed
+
+Main: now testing nvector_scale ...
+x is 0.762198
+a * x should   = 0.2000410.03617740.561040.2501790.482196
+a * x actually = 0.2000410.03617740.561040.2501790.482196
+Test passed

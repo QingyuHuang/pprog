@@ -1,0 +1,7 @@
+set term pdf
+set out "plot.pdf"
+set xlabel "t"
+set ylabel "y"
+plot "data.txt" i 2 u "t":"y_exp":"error" w yerrorbars lw 3 \
+, "data.txt" i 3 u "t":"y_fit" w lines lw 4
+

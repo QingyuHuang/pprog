@@ -1,0 +1,30 @@
+set term png
+set output "plot.png"
+set key out
+set xlabel "x"
+set ylabel "y"
+plot \
+"out.io.txt" with points title "stdio" \
+,"out.cmd.txt" with points title "cmdline" \
+,sin(x) with lines \
+,cos(x) with lines
+set term pdf
+set output "plot.png"
+set key out
+set xlabel "x"
+set ylabel "y"
+plot \
+"out.io.txt" with points title "stdio" \
+,"out.cmd.txt" with points title "cmdline" \
+,sin(x) with lines \
+,cos(x) with lines
+set term png
+set output "plot.png"
+set key out
+set xlabel "x"
+set ylabel "y"
+plot \
+"out.io.txt" with points title "stdio" \
+,"out.cmd.txt" with points title "cmdline" \
+,sin(x) with lines \
+,cos(x) with lines

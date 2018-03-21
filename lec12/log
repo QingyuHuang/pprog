@@ -1,0 +1,29 @@
+set term pdf
+set title "Error function"
+set output "plot.pdf"
+set key out
+set size ratio -1
+set grid
+set xlabel "x"
+set ylabel "u(x)"
+plot \
+"out_error.txt" using "t":"y(t)" with lines notitle \set term png
+set title "Error function"
+set output "plot.png"
+set key out
+set size ratio -1
+set grid
+set xlabel "x"
+set ylabel "u(x)"
+plot \
+"out_error.txt" using "t":"y(t)" with lines notitle \
+set term pdf
+set title "Error function"
+set output "plot.pdf"
+set key out
+set size ratio -1
+set grid
+set xlabel "x"
+set ylabel "u(x)"
+plot \
+"out_error.txt" using "t":"y(t)" with lines notitle \
