@@ -1,0 +1,45 @@
+Part A:
+
+Solve the system of equations:
+    0.0000
+    8.6571
+
+
+Find the minimum of the Rosenbrock's valley function:
+    1.0000
+    1.0000
+
+Find the minimum of the Himmelblau's function:
+    3.0000
+    2.0000
+
+Part B:
+
+Solve the system of equations with analytic Jacobian:
+    0.0000
+    8.6572
+
+
+Find the minimum of the Rosenbrock's valley function with analytic Jacobian:
+    1.0000
+    1.0000
+
+Find the minimum of the Himmelblau's function with analytic Jacobian:
+    3.0000
+    2.0000
+
+Part C:
+
+Solve the system of equations with refined linesearch:
+    0.0000
+    9.0880
+
+
+Find the minimum of the Rosenbrock's valley function with refined linesearch:
+    1.0000
+    1.0000
+
+Find the minimum of the Himmelblau's function with refined linesearch:
+    3.0000
+    2.0000
+

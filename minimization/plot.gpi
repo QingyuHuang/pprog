@@ -1,0 +1,10 @@
+set term svg
+set output "plot.svg"
+
+set xlabel "x"
+set ylabel "y"
+set grid
+
+plot "data.txt" index 0 using 1:2:3 with errorbars title "origin" lt rgb "red",  "data.txt" index 1 using 1:2 with lines title "fit" lw 2 lt rgb "black"
+
+

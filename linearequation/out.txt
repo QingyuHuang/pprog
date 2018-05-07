@@ -1,0 +1,96 @@
+
+Solving linear equations using QR-decomposition by modified Gram-Schmidt orthogonalization:
+
+A. 1. Implement "void qr_gs_decomp(matrix* A, matrix* R)":
+
+generate a (n>m) matrix A:
+    0.0000     2.0000     4.0000     6.0000 
+    1.0000     3.0000     5.0000     7.0000 
+    2.0000     4.0000     6.0000     8.0000 
+    3.0000     5.0000     7.0000     9.0000 
+    4.0000     6.0000     8.0000    10.0000 
+
+matrix Q:
+    0.0000     0.7746    -0.2530     0.6146 
+    0.1826     0.5164    -0.2530     0.6146 
+    0.3651     0.2582    -0.3162     0.2234 
+    0.5477     0.0000    -0.7589    -0.3356 
+    0.7303    -0.2582    -0.4427    -0.2866 
+
+matrix R:
+    5.4772     9.1287    12.7802    16.4317 
+    0.0000     2.5820     5.1640     7.7460 
+    0.0000     0.0000     0.0000     0.0000 
+    0.0000     0.0000     0.0000     0.0000 
+
+R is upper triangular.
+
+QR=A is True.
+
+
+A. 2. Implement "void qr_gs_solve(const matrix* Q, const matrix* R,const vector* b,vector* x)":
+
+generate square matrix A:
+    4.0000     7.0000 
+    2.0000     6.0000 
+
+generate vector b:
+    1.0000
+    1.0000
+
+matrix Q:
+    0.8944    -0.4472 
+    0.4472     0.8944 
+
+matrix R:
+    4.4721     8.9443 
+    0.0000     2.2361 
+
+vector x:
+   -0.1000
+    0.2000
+
+vector Ax:
+    1.0000
+    1.0000
+
+Ax=b is True.
+
+B. Matrix inverse by Gram-Schmidt QR factorization
+
+Implement "void qr_gs_inverse(const matrix* Q, const matrix* R, matrix* B)"
+
+generate square matrix A:
+    4.0000     7.0000 
+    2.0000     6.0000 
+
+matrix Q:
+    0.8944    -0.4472 
+    0.4472     0.8944 
+
+matrix R:
+    4.4721     8.9443 
+    0.0000     2.2361 
+
+Inverse matrix B:
+    0.6000    -0.7000 
+   -0.2000     0.4000 
+
+AB=I is True.
+
+C. QR-decomposition by Givens rotations
+
+generate a (n>m) matrix A:
+    0.0000     2.0000     4.0000     6.0000 
+    1.0000     3.0000     5.0000     7.0000 
+    2.0000     4.0000     6.0000     8.0000 
+    3.0000     5.0000     7.0000     9.0000 
+    4.0000     6.0000     8.0000    10.0000 
+
+matrix QR:
+    3.7417     6.9488    10.1559    13.3631 
+    1.5708     2.3905     4.7809     7.1714 
+    1.1071    -2.7211     0.0000    -0.0000 
+    0.9303    -0.4115     0.0000     0.0000 
+    4.0000     6.0000     8.0000    10.0000 
+

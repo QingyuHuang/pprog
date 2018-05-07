@@ -1,0 +1,41 @@
+Newton's minimization method:
+
+Find the minima of the Rosenbrock's valley function f(x,y) = (1-x)^2+100*(y-x^2)^2 
+The minima [x;y] = 
+    1.0000
+    1.0000
+
+ 13 steps it takes for the algorithm to reach the minimum.
+
+Find the minima of the Himmelblau's function f(x,y) = (x^2+y-11)^2 + (x+y^2-7)^2 
+The minima [x;y] = 
+   -2.8051
+    3.1313
+
+ 3 steps it takes for the algorithm to reach the minimum.
+
+
+Quasi-Newton method with Broyden's update:
+
+Find the minima of the Himmelblau's function f(x,y) = (1-x)^2+100*(y-x^2)^2 
+The minima [x;y] = 
+    0.9996
+    0.9992
+
+10612 steps it takes for the algorithm to reach the minimum.
+
+Find the minima of the Himmelblau's function f(x,y) = (x^2+y-11)^2 + (x+y^2-7)^2 
+The minima [x;y] = 
+   -2.8051
+    3.1313
+
+ 14 steps it takes for the algorithm to reach the minimum.
+
+Non-linear lieast-squares fitting:
+
+The minima [x;y] = 
+    3.5570
+    3.2054
+    1.2319
+
+ 461 steps it takes for the algorithm to reach the minimum.
