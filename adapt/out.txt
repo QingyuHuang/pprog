@@ -1,0 +1,106 @@
+===================================================================
+Part A:
+
+Recursive adaptive integrator: integrating sqrt(x) from 0 to 1
+acc=0.0001 eps=0.0001
+              Q = 0.666681
+          exact = 0.666667
+          calls = 40
+estimated error = 0.000166668
+   actual error = 1.42662e-05
+
+Recursive adaptive integrator: integrating 1/sqrt(x) from 0 to 1
+acc=0.0001 eps=0.0001
+              Q = 2
+          exact = 2
+          calls = 17140
+estimated error = 0.0003
+   actual error = 2.61204e-06
+
+Recursive adaptive integrator: integrating log(x)/sqrt(x) from 0 to 1
+acc=0.0001 eps=0.0001
+              Q = -4
+          exact = -4
+          calls = 29972
+estimated error = 0.0005
+   actual error = 1.65101e-06
+
+Recursive adaptive integrator: integrating 4.0*sqrt(1-(1-x)*(1-x)) from 0 to 1
+acc=0.0001 eps=0.0001
+              Q = 3.1416
+          exact = 3.14159
+          calls = 80
+estimated error = 0.00041416
+   actual error = 4.85411e-06
+
+
+===================================================================
+Part B:
+
+Infinite limits: integrating 1/(1+x*x) from -inf to inf
+acc=0.0001 eps=0.0001
+              Q = 3.14159
+          exact = 3.14159
+          calls = 232
+estimated error = 0.000414159
+   actual error = 2.1921e-06
+
+Infinite limits: integrating 1.0/(x*x)*sin(1.0/x) from 0.63662 to inf
+acc=0.0001 eps=0.0001
+              Q = 1
+          exact = 1
+          calls = 180
+estimated error = 0.0002
+   actual error = 1.59725e-06
+
+Infinite limits: integrating x*log(x)/((1+x*x)*(1+x*x)) from 0 to inf
+acc=0.0001 eps=0.0001
+              Q = 2.16912e-07
+          exact = 0
+          calls = 200
+estimated error = 0.0001
+   actual error = 2.16912e-07
+
+Infinite limits: integrating x/sqrt(x-1) from 1 to 2
+acc=0.0001 eps=0.0001
+              Q = 2.66666
+          exact = 2.66667
+          calls = 784
+estimated error = 0.000366666
+   actual error = 4.15181e-06
+
+
+===================================================================
+Part C:
+
+clenshaw_curtis: integrating sqrt(x) from 0 to 1
+acc=0.0001 eps=0.0001
+              Q = 0.666667
+          exact = 0.666667
+          calls = 64
+estimated error = 0.000166667
+   actual error = 1.13668e-07
+
+clenshaw_curtis: integrating 1/sqrt(x) from 0 to 1
+acc=0.0001 eps=0.0001
+              Q = 2
+          exact = 2
+          calls = 52
+estimated error = 0.0003
+   actual error = 1.09689e-07
+
+clenshaw_curtis: integrating log(x)/sqrt(x) from 0 to 1
+acc=0.0001 eps=0.0001
+              Q = -4
+          exact = -4
+          calls = 272
+estimated error = 0.0005
+   actual error = 1.8666e-06
+
+clenshaw_curtis: integrating 4.0*sqrt(1-(1-x)*(1-x)) from 0 to 1
+acc=0.0001 eps=0.0001
+              Q = 3.14159
+          exact = 3.14159
+          calls = 120
+estimated error = 0.000414159
+   actual error = 7.58483e-09
