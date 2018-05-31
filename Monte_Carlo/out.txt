@@ -1,0 +1,12 @@
+
+
+Part A:
+
+Integrating r^2 with r from 0 to 1, phi from 0 to 2*pi and theta from 0 to pi with 1000000 points, resulting in 6.57841 with an error of 0.00588099.
+
+Integrating 1/pi^3*1/(1-cos(x)cos(y)cos(z) with x from 0 to pi, with y from 0 to pi and with z from 0 to pi with 1000000 points, resulting in 1.37714 with an error of 0.00520806.
+
+
+Part B
+See Graph
+
