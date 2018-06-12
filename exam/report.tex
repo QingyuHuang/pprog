@@ -1,0 +1,156 @@
+\documentclass[oneside, 12pt, a4paper]{article}
+\usepackage[utf8]{inputenc} 
+\usepackage[T1]{fontenc} 
+\usepackage{fontspec}  
+\setmonofont{Consolas}  
+\usepackage{microtype} 
+\usepackage{amsmath, amssymb, mathtools} 
+\usepackage{algorithm}  
+\usepackage{algorithmicx}  
+\usepackage{algpseudocode}  
+\usepackage{graphicx} 
+\usepackage{hyperref} 
+\hypersetup{colorlinks=false,urlcolor=black} 
+\usepackage{float}
+\usepackage{listings}
+\usepackage{lmodern}
+\makeatletter
+\title{Golub-Kahan-Lanczos bidiagonalization}    
+\author{Qingyu Huang \\
+201703956}        
+\date{\today}                   
+\makeatother
+
+\begin{document}
+\maketitle
+
+\section*{Introduction}
+
+The Golub-Kahan-Lanczos bidiagonalization factorization can be used on its own to solve linear systems and ordinary least squares problems, calculate the determinant and the (pseudo-)inverse of a matrix. But it mostly is used as the first step in the QR-like singular value decomposition (SVD) method, it also provides a powerful tool for solving large-scale singular value and related eigenvalue problems, as well as least-squares and saddle-point problems.
+
+
+\section*{GKL bidiagonalization}
+
+The Golub-Kahan-Lanczos bidiagonalization is 
+
+\[{{U}^{*}}AV=B=\left[ \begin{matrix}
+   {{\alpha }_{1}} & {} & {} & {} & {} & {}  \\
+   {{\beta }_{1}} & {{\alpha }_{2}} & {} & {} & {} & {}  \\
+   {} & {{\beta }_{2}} & {{\alpha }_{3}} & {} & {} & {}  \\
+   {} & {} & {{\beta }_{3}} & \ddots  & {} & {}  \\
+   {} & {} & {} & \ddots  & {{\alpha }_{n-1}} & {}  \\
+   {} & {} & {} & {} & {{\beta }_{n-1}} & {{\alpha }_{n}}  \\
+\end{matrix} \right]\]\\
+\\
+U and V are unitary matrices, and B is bidiagonal matrix. We take any $m \times 1$ column vector b as a starting vector, and choose $\beta_1 = \|b\|$, $u_1 = b/\beta_1$, $\alpha_1 = \|A^T u_1\|$ and $v_1 = (A^T u_1)/\alpha_1$. 
+
+\begin{algorithm}[h]  
+  \caption{Golub-Kahan-Lanczos Bidiagonalization procedure}  
+  \begin{algorithmic}[1]  
+	\State Starting vector b, Choose $\beta_1 = \|b\|$, $u_1 = b/\beta_1$, $\alpha_1 = \|A^T u_1\|$ and $v_1 = (A^T u_1)/\alpha_1$.
+    \For{each $j = 1,2,\cdots$}  
+      \State $u_{j+1} = Av_j - \alpha_j u_j$
+      \State $\beta_{j+1} = \|u_{j+1}\|_2$  
+	 \State $u_{j+1} = u_{j+1}/\beta_{j+1}$
+	 \State $v_{j+1} = A^T u_{j+1} - \beta_{j+1} v_j$
+      \State $\alpha_{j+1} = \|v_{j+1}\|_2$ 
+      \State $v_{j+1} = v_{j+1}/\alpha_{j+1}$ 
+    \EndFor  
+  \end{algorithmic}  
+\end{algorithm}  
+
+\section*{Implementation}
+
+We use GNU Scientific Library to implement the algorithm, suppose the size of matrix A is $m \times n$, m is the number of rows and n is the number of columns, so matrix A has three cases: \textbf{m=n}, \textbf{m<n} and \textbf{m>n}. We will test these three cases in our c language program.\\\\
+The program include two files: \textbf{main.c} and \textbf{gkl\_bidiag.c}. \textbf{main.c} include all the test code, \textbf{gkl\_bidiag.c} include the Golub-Kahan-Lanczos bidiagonalization factorization function \textbf{gkl\_bidiag}, the \textbf{print\_matrix} function for printing the matrix out, and the \textbf{check\_matrix\_equal} function used for checking whetheer two matrices equal or not.\\\\
+When the size of matrix A is  $m \times n$, suppose the minimum of $m$ and $n$ is $p$, the size of matrix U should be  $m \times p$, the size of matrix V should be  $n \times p$, and the size of bidiagnoal matrix B should be  $p \times p$. First assign the start vector b to an arbitrary unit 2-norm vector, in our program we assign vector b as $[1,0,0,\cdots,0]^T$, then do every step exactly as the algorithm above and finally get the matrix U and matrix V, then group vector alpha and beta together to make the matrix B. The alpha vector is in the main diagonal of the matrix B, and beta vector is in the first diagonal below the main diagonal of the matrix B.\\\\
+In the main program we randomly generate three different matrix with different size to represent m=n, m<n and m=n, we get matrix U,V and B of each matrix and then test $U^* A V$ with the B, the difference between these two matrices are very small, the error is less than 1e-10.
+
+
+\section*{References}
+
+Galassi, M., et al. "GNU Scientific Library Reference Manual, ISBN 0954612078." Library available online at http://www.gnu.org/software/gsl (2015).
+\\
+\\
+Sikurajapathi, Indunil. Computing the Leading Singular Values of a Large Matrix by Direct and Inverse Iteration. Skolan för datakunskap och kommunikation, Kungliga Tekniska högskolan, 2007.
+
+
+
+
+\section*{Appendix}
+
+\begin{lstlisting}[language = C++, numbers=left,   
+        numberstyle=\tiny,keywordstyle=\color{blue!70},  
+        commentstyle=\color{red!50!green!50!blue!50},frame=shadowbox,  
+        rulesepcolor=\color{red!20!green!20!blue!20},basicstyle=\ttfamily]  
+
+void gkl_bidiag(gsl_matrix* A,gsl_matrix* U,
+                gsl_matrix* B,gsl_matrix* V)
+{
+    int m=A->size1;
+    int n=A->size2;
+    int p=(m<n)? m:n;
+
+    gsl_vector* start=gsl_vector_alloc(m);
+    gsl_vector* alpha=gsl_vector_alloc(p);
+    gsl_vector* beta=gsl_vector_alloc(p);
+    gsl_vector* tmp=gsl_vector_alloc(n);
+    gsl_vector* Vj=gsl_vector_alloc(n);
+    gsl_vector* Uj=gsl_vector_alloc(m);
+
+    gsl_vector_set(start,0,1);
+    gsl_vector_set(beta,0,gsl_blas_dnrm2(start));
+
+    gsl_vector_scale(start,1.0/gsl_blas_dnrm2(start));
+    gsl_matrix_set_col(U,0,start);
+    gsl_blas_dgemv (CblasTrans, 1.0, A, start, 0, tmp);
+
+    gsl_vector_set(alpha,0,gsl_blas_dnrm2(tmp));
+    gsl_vector_scale(tmp,1.0/gsl_blas_dnrm2(tmp));
+    gsl_matrix_set_col(V,0,tmp);
+
+
+    for(int j=0; j<p-1; j++)
+    {
+        gsl_matrix_get_col(Vj, V, j);
+        gsl_matrix_get_col(Uj, U, j);
+
+        gsl_blas_dgemv (CblasNoTrans, 1.0, A, Vj, 
+                   (-1)*gsl_vector_get(alpha,j), Uj);
+
+        gsl_vector_set(beta,j+1,gsl_blas_dnrm2(Uj));
+        gsl_vector_scale(Uj,1.0/gsl_blas_dnrm2(Uj));
+
+        gsl_matrix_set_col(U,j+1,Uj);
+
+
+
+        gsl_blas_dgemv (CblasTrans, 1.0, A, Uj, 
+                   (-1)*gsl_vector_get(beta,j+1), Vj);
+        gsl_vector_set(alpha,j+1,gsl_blas_dnrm2(Vj));
+        gsl_vector_scale(Vj,1.0/gsl_blas_dnrm2(Vj));
+
+        gsl_matrix_set_col(V,j+1,Vj);
+
+    }
+
+    for(int i=0; i<p; i++)
+    {
+        gsl_matrix_set(B,i,i,gsl_vector_get(alpha,i));
+    }
+    for(int i=1; i<p; i++)
+    {
+        gsl_matrix_set(B,i,i-1,gsl_vector_get(beta,i));
+    }
+
+    gsl_vector_free(start);
+    gsl_vector_free(alpha);
+    gsl_vector_free(beta);
+    gsl_vector_free(tmp);
+    gsl_vector_free(Vj);
+    gsl_vector_free(Uj);
+
+}  
+ \end{lstlisting}  
+
+\end{document}
